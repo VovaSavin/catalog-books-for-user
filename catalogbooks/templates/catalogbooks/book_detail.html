@@ -1,0 +1,42 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h4>{{specific_book.title}}</h4>
+<p style="font-size: 12px;"><strong>Автор: </strong><a href="{% url 'author_info' specific_book.author.id %}">
+        {{specific_book.author}}</a></p>
+<p style="font-size: 12px;">Язык: {{specific_book.language.all|join:","}}</p>
+<p style="font-size: 12px;">{{specific_book.genre.all|join:","}}</p>
+<p style="font-size: 12px;"><strong>ISBN: </strong>{{specific_book.isbn}}</p>
+{% if perms.catalogbooks.can_mark_returned %}
+<a href="{% url 'update-book' specific_book.id %}" class="mr-2 small lh-125">Обновить инфо о книге</a>
+<a href="{% url 'delete-book' specific_book.id %}" class="ml-2 mr-2 small lh-125">Удалить книгу</a>
+{% endif %}
+<div class="container-fluid mb-5">
+    <hr>
+    <p class="custom_summary">{{specific_book.summary}}</p>
+</div>
+
+<div class="ml-5">
+    <h4>Экземпляры</h4>
+    {% if specific_book.bookinstance_set %}
+    {% for copy in specific_book.bookinstance_set.all %}
+    <!--bookinstance_set - это имя модели в нижнем регистре и _set Book получила доступ к данной модели через ForeignKey-->
+    <hr>
+    <p
+        class="{% if copy.book_status == 'Н' %}text-success{% elif copy.book_status == 'А' %}text-warning{% else %}text-danger{% endif %}">
+        {{ copy.get_book_status_display }}
+        <!--get_book_status_display автоматически созданный метод get_fieldInModel_display-->
+    </p>
+    {% if copy.book_status != 'Н' %}
+    <p>Появится: {{ copy.date_back }}</p>
+    {% endif %}
+    <p>{{ copy.imprint }}</p>
+    <p><strong>ID: </strong>{{ copy.uniq_id }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if usersbooks %}
+{% for userbook in usersbooks %}
+<a href="{% url 'books-detail' userbook.book.id %}" class="{% if userbook.is_overdue %}text-danger{% endif %}">
+    {{ userbook.book.title }}
+</a>
+<p class="small lh-125">
+    Вернуть: {{ userbook.date_back }}
+</p>
+<hr>
+{% endfor %}
+{% else %}
+<p class="lead">
+    Вы ещё не взяли ни одной книги в аренду
+</p>
+{% endif %}
+{% endblock %}

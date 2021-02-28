@@ -1,0 +1,25 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if perms.catalogbooks.can_mark_returned %}
+<h4>
+    {{ object_bookinstance.book.title }}
+</h4>
+<p class="small lh-125">
+    ({{ object_bookinstance.debtor }})
+</p>
+<p class="small lh-125 {% if object_bookinstance.is_overdue %}text-danger{% endif %}">
+    {{ object_bookinstance.date_back }}
+</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Ок" class="btn btn-primary btn-sm" style="width: 20%;">
+</form>
+{% else %}
+Вы всего лишь пользователь и вам не доступны эти привилегии...
+{% endif %}
+{% endblock %}

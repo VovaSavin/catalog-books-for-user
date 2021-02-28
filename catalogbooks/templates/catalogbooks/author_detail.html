@@ -1,0 +1,29 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h4>{{specific_author.name}} {{ specific_author.surname }}</h4>
+{% if specific_author.date_birth %}
+<span class="small lh-125">({{ specific_author.date_birth }} - {{ specific_author.date_death }})</span>
+{% else %}
+<p class="small lh-125">Нет данных</p>
+{% endif %}
+<br>
+{% if perms.catalogbooks.can_mark_returned %}
+<a href="{% url 'update-author' specific_author.id %}" class="mr-2 small lh-125">Обновить автора</a>
+<a href="{% url 'delete-author' specific_author.id %}" class="ml-2 mr-2 small lh-125">Удалить автора</a>
+{% endif %}
+
+<div class="container-fluid">
+    {% for onebook in specific_author.books_set.all %}
+    <!--books_set - это имя модели в нижнем регистре и _set Author получила доступ к данной модели через ForeignKey-->
+    <hr>
+    <a href="{% url 'books-detail' onebook.id %}">
+        <p>{{ onebook.title }}</p>
+    </a>
+    <p class="small lh-125">{{ onebook.summary }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

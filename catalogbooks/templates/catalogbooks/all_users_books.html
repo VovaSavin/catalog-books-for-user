@@ -1,0 +1,35 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if perms.catalogbooks.can_mark_returned %}
+<h3>
+    Все арендованые книги:
+</h3>
+<div class="ml-3">
+    {% if allusersbooks %}
+    {% for oneuserbook in allusersbooks %}
+    <a href="{% url 'books-detail' oneuserbook.book.id %}"
+        class="{% if oneuserbook.is_overdue %}text-danger{% endif %}">
+        {{ oneuserbook.book.title }}
+    </a>
+    <span>
+        ({{ oneuserbook.debtor.username }})
+    </span>
+    <br>
+    <a href="{% url 'renewdate' oneuserbook.uniq_id  %}" class="small lh-125">
+        Сменить дату возврата
+    </a>
+    <p class="small lh-125">
+        Вернуть: {{ oneuserbook.date_back }}
+    </p>
+    <hr>
+    {% endfor %}
+    {% endif %}
+</div>
+{% else %}
+Вы всего лишь пользователь и вам не доступны эти привилегии...
+{% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block sidebar %}
+{% endblock %}
+
+
+{% block content %}
+<div class="col-sm-10">
+    <h1>Мини-библиотека</h1>
+    <p>Разработанная <em>кем-то или чем-то :)</em></p>
+    <p>Информация о колличестве...</p>
+</div>
+<ul class="non_style_list">
+    <li>
+        <strong>
+            Книги: {{num_books}}
+        </strong>
+    </li>
+    <li>
+        <strong>
+            Екземпляры книг: {{num_instance_books}}
+        </strong>
+    </li>
+    <li>
+        <strong>
+            Екземпляры в наличии: {{num_instance_books_n}}
+        </strong>
+    </li>
+    <li>
+        <strong>
+            Авторы: {{num_author}}
+        </strong>
+    </li>
+    <li>
+        <strong>
+            Жанры: {{num_genre}}
+        </strong>
+    </li>
+    <li>
+        <strong>
+            Варианты языков: {{num_language}}
+        </strong>
+    </li>
+</ul>
+<p class="small lh-125">
+    Ты посещал эту страницу {{ num_visit }}  раз(а)
+</p>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

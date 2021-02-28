@@ -1,0 +1,26 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if author_list %}
+<ul class="non_style_list">
+    {% for author in author_list %}
+    <li>
+        <a href="{{ author.get_absolute_url }}">
+            <h6>{{ author.name }} {{ author.surname }}</h6>
+        </a>
+        {% if author.date_birth %}
+        <span class="small lh-125">({{ author.date_birth }} - {{ author.date_death }})</span>
+        {% else %}
+        <p class="small lh-125">Нет данных</p>
+        {% endif %}
+    </li>
+    <hr>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="lead">Нет авторов</p>
+{% endif %}
+{% endblock %}

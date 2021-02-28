@@ -1,0 +1,40 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block content %}
+{% if form.errors %}
+<p class="lead">
+    Логин и пароль не соответствуют
+</p>
+{% endif %}
+{% if next %}
+{% if user.is_authenticated %}
+<p class="lead">
+    У вас нет доступа к этой странице
+</p>
+{% else %}
+<p class="lead">
+    Войдите, что бы посмотреть страницу
+</p>
+{% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}" class="custom_form">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
+    <input type="submit" value="login" class="btn btn-primary" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+<a href="{% url 'password_reset' %}">Проебали пароль?</a>
+{% endblock %}

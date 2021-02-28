@@ -1,0 +1,21 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if books_list %}
+<ul class="non_style_list">
+    {% for book in books_list %}
+    <li>
+        <a href="{{ book.get_absolute_url }}">
+            <strong>{{ book.title }}</strong>
+        </a>
+        <p class="small lh-125">Автор: {{ book.author }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="lead">Нет книг</p>
+{% endif %}
+{% endblock %}

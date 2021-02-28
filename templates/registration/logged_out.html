@@ -1,0 +1,16 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+Выход из аккаунта
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center; width: 100%;">
+    <p class="lead">
+        Вы вышли с акккаунта
+    </p>
+    <a href="{% url 'login' %}">
+        Войти снова
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "catalogbooks/main.html" %}
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+{% if perms.catalogbooks.create_book_bystaff %}
+<h4>
+    Удалить автора: {{ author }}
+</h4>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Удалить" class="btn btn-danger btn-sm" style="width: 20%;">
+</form>
+{% else %}
+Вы всего лишь пользователь и вам не доступны эти привилегии...
+{% endif %}
+{% endblock %}

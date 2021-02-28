@@ -1,0 +1,63 @@
+body {
+	background-color: lavender;
+}
+
+aside {
+	width: 18%;
+	min-height: inherit;
+	margin: 5px;
+	float: left;
+	text-align: center;
+	border-right: 2px solid rgba(0, 0, 0, 0.562);
+}
+
+main {
+	width: 80%;
+	margin: 5px;
+	float: right;
+}
+
+.custom_form {
+	width: 100%;
+	padding: 15px;
+	margin: auto;
+}
+
+.non_style_list {
+	list-style: none;
+}
+
+#id_username, #id_genre, #id_isbn, #id_summary, #id_password, #id_email, #id_new_date_back, #id_name, #id_surname, #id_date_birth, #id_date_death, #id_title, #id_author, #id_language {
+	text-align: left;
+	display: block;
+	width: 100%;
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	margin-top: 5px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#id_email, #id_isbn {
+	width: 30%;
+}
+
+#id_new_date_back, #id_name, #id_surname, #id_date_birth, #id_date_death, #id_title, #id_author, #id_language, #id_genre {
+	width: 20%;
+	text-align: center;
+}
+
+#id_language, #id_genre, #id_summary {
+	height: auto;
+}
+
+.errorlist {
+	color: red;
+}
