@@ -61,7 +61,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'learndjango.wsgi.application'
+WSGI_APPLICATION = 'catalog-books-for-user.wsgi.application'
 
 
 # Database
@@ -124,6 +124,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 import dj_database_url
 # Для постоянного соединения
 db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Уменьшение размера статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
