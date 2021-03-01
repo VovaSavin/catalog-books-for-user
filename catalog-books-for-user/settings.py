@@ -128,3 +128,5 @@ DATABASES['default'].update(db_from_env)
 
 # Уменьшение размера статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+import django_heroku
+django_heroku.settings(locals())
