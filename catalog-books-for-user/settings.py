@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -115,7 +116,7 @@ USE_TZ = True
 STATIC_URL = '/static/' # Адресс для ссылки на статические файлы
 
 STATICFILES_DIRS = [
-BASE_DIR / "static",
+os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Абсолютный путь где collestatic будет собирать файлы
 
@@ -128,5 +129,5 @@ DATABASES['default'].update(db_from_env)
 
 # Уменьшение размера статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-import django_heroku
+
 django_heroku.settings(locals())
