@@ -78,6 +78,8 @@ class BookDetail(DetailView):
 
 
 class AuthorList(ListView):
+    '''Список авторов'''
+    
     model = Author
     context_object_name = 'author_list'
     template_name = 'catalogbooks/author_list.html'
