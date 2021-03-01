@@ -43,7 +43,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'learndjango.urls'
+ROOT_URLCONF = 'catalog-books-for-user.urls'
 
 TEMPLATES = [
     {
