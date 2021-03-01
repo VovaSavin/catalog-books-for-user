@@ -117,7 +117,7 @@ STATIC_URL = '/static/' # Адресс для ссылки на статичес
 STATICFILES_DIRS = [
 BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR/"staticfiles" # Абсолютный путь где collestatic будет собирать файлы
+STATIC_ROOT = BASE_DIR/"static" # Абсолютный путь где collestatic будет собирать файлы
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
