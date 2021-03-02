@@ -15,8 +15,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 't23xjuwpzgd@czimim2ss!q49m_g)+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = os.environ.get('DJANGO_DEBUG', '') != False
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
 
 
 ALLOWED_HOSTS = ['tranquil-temple-96943.herokuapp.com', '127.0.0.1']
