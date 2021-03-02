@@ -130,3 +130,4 @@ DATABASES['default'].update(db_from_env)
 # Уменьшение размера статических файлов
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+SECURE_SSL_REDIRECT = True
