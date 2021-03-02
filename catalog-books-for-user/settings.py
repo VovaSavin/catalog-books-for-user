@@ -14,9 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 't23xjuwpzgd@czimim2ss!q49m_g)+4!i^rhg2g$ibz11m=t#^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG', '') != False
 
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != False
+DEBUG = False
 
 ALLOWED_HOSTS = ['tranquil-temple-96943.herokuapp.com', '127.0.0.1']
 
@@ -131,3 +131,8 @@ DATABASES['default'].update(db_from_env)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True 
+SECURE_HSTS_SECONDS = 60
+SECURE_HSTS_PRELOAD  = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
